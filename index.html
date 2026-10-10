@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>0 to Shipped — Resume Parser</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="logo" href="#">0→Shipped<span class="logo-dot">.</span></a>
+    <nav class="site-nav">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#upload" class="nav-cta">Parse my resume</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO + UPLOAD ============ -->
+    <section class="hero">
+      <p class="eyebrow">Resume parser · mock build</p>
+      <h1>Know exactly what your resume is <span class="grad">missing</span>.</h1>
+      <p class="sub">
+        Upload a PDF, pick the role you're applying for, and get a match score with the
+        skills you already show — and the ones you don't. Zero to shipped, in one page.
+      </p>
+
+      <div id="upload" class="upload-card">
+        <div class="role-row">
+          <span class="role-label">Target role</span>
+          <div class="role-pills" id="rolePills">
+            <button class="pill is-active" data-role="frontend">Frontend Dev</button>
+            <button class="pill" data-role="backend">Backend Dev</button>
+            <button class="pill" data-role="data">Data Analyst</button>
+          </div>
+        </div>
+
+        <label
+          id="dropZone"
+          class="drop-zone"
+          for="fileInput"
+          aria-live="polite">
+          <input type="file" id="fileInput" accept="application/pdf,.pdf" hidden />
+          <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 16V4m0 0l-4 4m4-4l4 4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke-linecap="round"/>
+          </svg>
+          <span class="drop-text" id="dropText">
+            <strong>Click to upload</strong> or drag &amp; drop your resume
+          </span>
+          <span class="drop-hint">PDF only · everything stays in your browser</span>
+        </label>
+
+        <button id="demoBtn" class="demo-btn" type="button">No PDF handy? Try a sample resume →</button>
+
+        <p id="status" class="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ============ RESULTS ============ -->
+    <section id="results" class="results hidden" aria-live="polite">
+      <div class="result-grid">
+
+        <div class="score-panel">
+          <h2>Match score</h2>
+          <div class="ring-wrap">
+            <svg viewBox="0 0 120 120" class="ring">
+              <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+              <circle id="ringFg" class="ring-fg" cx="60" cy="60" r="52"></circle>
+            </svg>
+            <div class="ring-number" id="scoreNumber">0</div>
+          </div>
+          <p id="verdict" class="verdict">—</p>
+          <p class="score-meta"><span id="presentCount">0</span> of <span id="totalCount">0</span> role skills found</p>
+        </div>
+
+        <div class="skills-panel">
+          <div class="skill-group">
+            <h3><span class="dot dot-green"></span> Skills present</h3>
+            <ul id="presentList" class="chip-list"></ul>
+          </div>
+          <div class="skill-group">
+            <h3><span class="dot dot-red"></span> Skills missing</h3>
+            <ul id="missingList" class="chip-list"></ul>
+            <p id="missingHint" class="missing-hint"></p>
+          </div>
+        </div>
+
+      </div>
+      <p class="parsed-file" id="parsedFile"></p>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section id="how" class="how">
+      <h2 class="section-title">How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <h3>Upload</h3>
+          <p>Drop in the PDF export of your resume. In the real build, the text layer gets extracted server-side.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <h3>Parse</h3>
+          <p>The parser matches resume text against the skill list for the role you picked.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <h3>Ship</h3>
+          <p>You get a score, the skills you can prove, and a punch list of what to add before you apply.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section id="features" class="features">
+      <h2 class="section-title">Why bother</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>🎯 Role-aware scoring</h3>
+          <p>A resume is never "good" in the abstract — it's good for a job. Scoring is always against a target role.</p>
+        </div>
+        <div class="feature">
+          <h3>🧩 Gap lists, not vibes</h3>
+          <p>Instead of a vague "looks great", you get a concrete list of missing keywords recruiters filter on.</p>
+        </div>
+        <div class="feature">
+          <h3>🔒 Browser-only demo</h3>
+          <p>This mock runs entirely client-side. Your file never leaves the page — no backend, no storage.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>0 to Shipped — resume parser mock · built with plain HTML, CSS &amp; JS</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
